@@ -1,0 +1,23 @@
+.page-background {
+    background-color: #F5F5F5;
+    /*height: 5em;*/
+}
+
+.make-white {
+    background-color: white;
+}
+
+.make-grey {
+    background-color: #F5F5F5;
+}
+
+.grid {
+    /*width: 900px;*/
+
+    background-color: #FFFFFF;
+}
+
+.container {
+    margin: 0px;
+    max-width: 100%;
+}

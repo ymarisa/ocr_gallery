@@ -1,1 +1,6 @@
 Pipfile.lock
+__pycache__
+.idea/misc.xml
+.idea/ocr_gallery.iml
+.idea/workspace.xml
+.idea/
