@@ -1,6 +1,20 @@
 import glob
 import os
 from jinja2 import Template
+try:
+    from PIL import Image
+except ImportError:
+    import Image
+import pytesseract
+
+
+def get_img_text(image_path):
+    try:
+        with Image.open(image_path) as image:
+            detected_text = pytesseract.image_to_string(image, lang="eng")
+    except FileNotFoundError:
+        return ""
+    return detected_text
 
 
 def generate_pages(image_names):
@@ -20,9 +34,20 @@ def generate_pages(image_names):
         with open("templates/base.html") as template_fp:
             page = Template(template_fp.read())
 
+        print(i["image_path"])
+
+        image_path = "images/" + os.path.basename(i["image_path"])
+        text = get_img_text(image_path)
+        # print(text)
+        if text:
+            text = text.split("\n")
+        else:
+            text = ["No text detected"]
+
         built_page = page.render(
             image_names=image_dicts,
-            image_path=i["image_path"]
+            image_path=i["image_path"],
+            caption_lines=text
         )
 
         with open("docs/" + i["page_path"], 'w') as output_fp:

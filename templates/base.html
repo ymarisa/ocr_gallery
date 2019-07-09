@@ -16,10 +16,13 @@
 </head>
 <body>
     <div class="container">
+        <!-- first row       -->
         <div class="row">
             <div style="height: 5em;" class="col-white">
             </div>
         </div>
+
+        <!-- second row       -->
         <div class="row">
             <div class="col-2">
                 {% for image in image_names %}
@@ -33,11 +36,16 @@
 
             </div>
         </div>
+        <!-- third row       -->
             <div class="row">
                 <div class="col-2">
                 </div>
                 <div style="height: 5em;" class="col">
-
+                    <p>
+                        {% for line in caption_lines %}
+                        {{ line }}<br/>
+                        {% endfor %}
+                    </p>
                 </div>
                 <div class="col-2">
 
@@ -45,12 +53,5 @@
         </div>
     </div>
 
-    <div>
-        {{ image }}
-    </div>
-
-    <div>
-        {{ caption }}
-    </div>
 
 </body>
